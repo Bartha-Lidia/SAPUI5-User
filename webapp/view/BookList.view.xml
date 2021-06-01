@@ -1,0 +1,51 @@
+<mvc:View
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:smartTable="sap.ui.comp.smarttable"
+		controllerName="org.ubb.books.controller.BookList"
+		height="100%">
+
+	<VBox fitContainer="true">
+		<smartTable:SmartTable entitySet="Books" id="booksTable"
+							   smartFilterId="smartFilterBar"
+							   useVariantManagement="false"
+							   useTablePersonalisation="true"
+							   header="Books"
+							   tableType="ResponsiveTable"
+							   showRowCount="false"
+							   persistencyKey="SmartTableRefApp_Explored"
+							   enableAutoBinding="true"
+							   class="sapUiResponsiveContentPadding"
+							   initiallyVisibleFields="Isbn,Title,Author,DataPublished,Language,NrAvailableBook,TotalNrBook">
+			<Table>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{Isbn}" />
+							<Text text="{Title}" />
+							<Text text="{Author}" />
+							<Text text="{
+								path: 'DataPublished',
+								type: 'sap.ui.model.type.Date'
+               				}"
+							/>
+							<Text text="{Language}" />
+							<Text text="{NrAvailableBook}" />
+							<HBox>
+								<Button
+										id="checkoutBookButton"
+										icon="sap-icon://bbyd-active-sales"
+										press=".checkout"
+										tooltip="{i18n>checkoutButtonText}">
+								</Button>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<smartTable:layoutData>
+				<FlexItemData growFactor="1" baseSize="0%" />
+			</smartTable:layoutData>
+		</smartTable:SmartTable>
+	</VBox>
+</mvc:View>
